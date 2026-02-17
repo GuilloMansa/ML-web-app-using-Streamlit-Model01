@@ -3,7 +3,6 @@ import pickle
 import numpy as np
 import os
 
-# ---------- LOAD MODEL ----------
 MODEL_PATH = "09-Kmeans-housing-RF-(1).pkl"
 
 if not os.path.exists(MODEL_PATH):
@@ -14,18 +13,13 @@ with open(MODEL_PATH, "rb") as f:
     model = pickle.load(f)
 
 
-# ---------- CLASS MAP ----------
-class_dict = {
-    0: "Ingreso medio",
+class_dict = {0: "Ingreso medio",
     1: "Ingreso medio",
     2: "Ingreso bajo",
     3: "Ingreso alto",
     4: "Ingreso alto",
-    5: "Ingreso bajo"
-}
+    5: "Ingreso bajo"}
 
-
-# ---------- UI ----------
 st.title("House Income Prediction")
 st.markdown("**Powered by Guillermo Mansanta**")
 st.divider()
@@ -40,8 +34,6 @@ val7 = st.slider("Latitude", 0.0, 60.0, 30.0)
 val8 = st.slider("Longitude", -150.0, 0.0, -100.0)
 val9 = st.slider("MedHouseVal", 0.0, 10.0, 5.0)
 
-
-# ---------- PREDICT ----------
 if st.button("Predict"):
 
     features = np.array([[val1, val2, val3, val4, val5, val6, val7, val8, val9]])
